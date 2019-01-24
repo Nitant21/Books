@@ -58,11 +58,29 @@
                     <asp:Label ID="Label1" runat="server" Text='<%# Bind("Title") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="price">
+            <asp:TemplateField HeaderText="Price">
                 <ItemTemplate>
                     <asp:Label ID="Label2" runat="server" Text='<%# Bind("Selling_price") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
+            <asp:TemplateField HeaderText="Category">
+                <ItemTemplate>
+                    <asp:Label ID="Label5" runat="server" Text='<%# Bind("Category") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            
+            <asp:TemplateField>
+                <ItemTemplate>
+                    <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="View Details" />
+                </ItemTemplate>
+            </asp:TemplateField>
+            
+            <asp:TemplateField HeaderText="BookId">
+                <ItemTemplate>
+                    <asp:Label ID="Label6" runat="server" Text='<%# Bind("Book_id") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            
         </Columns>
         <EditRowStyle BackColor="#7C6F57" />
         <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />

@@ -50,7 +50,7 @@ public partial class HomePage : System.Web.UI.Page
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select Pic ,Title,Selling_price from Books";
+            cmd.CommandText = "select Pic ,Title,Selling_price, Category, Book_id from Books";
 
             con.Open();
 
@@ -102,7 +102,7 @@ public partial class HomePage : System.Web.UI.Page
         //cmd.CommandText = "select * from Books b join UserInfo u on b.User_id = u.User_id where " +
         //    "(@category IS NULL OR Category = @category) AND (@area IS NULL OR Area = @area) " +
         //    "AND (@title IS NULL OR Title = @title) AND (@author IS NULL OR Author = @author);";
-        cmd.CommandText = "select distinct Title, Selling_price, CAST(Pic AS varbinary(max)) AS Pic from Books b join UserInfo u ON b.User_id = u.User_id " +
+        cmd.CommandText = "select distinct Title, Category, Selling_price, CAST(Pic AS varbinary(max)) AS Pic from Books b join UserInfo u ON b.User_id = u.User_id " +
             "join BookAuth ba ON b.Book_id = ba.Book_id join Authors a ON ba.Author_id = a.Author_id " +
             "where (@category IS NULL OR Category = @category) AND (@Area IS NULL OR Area = @area) " +
             "AND (@title IS NULL OR Title = @title) AND (@author IS NULL OR a.Name = @author);";
@@ -122,6 +122,16 @@ public partial class HomePage : System.Web.UI.Page
         cn1.Close();
 
 
+    }
+
+    protected void Button2_Click(object sender, EventArgs e)
+    {
+        
+        Button btn = (Button)sender;
+        GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+        Label lbl = (Label)gvr.FindControl("Label6");
+        Session["id"] = lbl.Text;
+        Response.Redirect("BookDetails.aspx");
     }
 }
 
